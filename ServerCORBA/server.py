@@ -7,8 +7,13 @@ import CorbaServer__POA
 
 import sys
 
+class Test:
+	def __init__(self,info):
+		print "TEst"+info
+
 class Manager_i(CorbaServer__POA.Manager):
 	def testManager(self,msg):
+		test = Test(msg)
 		print "Server got "+msg
 		return "Echo:"+msg
 

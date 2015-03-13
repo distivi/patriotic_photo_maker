@@ -2,5 +2,6 @@
 module CorbaServer{
 	interface Manager{
 		string testManager(in string msg);
+		Byte strToNumber(in string arg);
 	};
 };
