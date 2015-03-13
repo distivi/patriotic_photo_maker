@@ -1,0 +1,6 @@
+// server interface definition
+module CorbaServer{
+	interface Manager{
+		string testManager(in string msg);
+	};
+};
