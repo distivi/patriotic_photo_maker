@@ -1,0 +1,745 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		30AF96A81AB343E0005ACE05 /* CORBAManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AF96A71AB343E0005ACE05 /* CORBAManager.m */; };
+		30AF96AB1AB37905005ACE05 /* HelloWorld.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30AF96AA1AB37905005ACE05 /* HelloWorld.idl */; };
+		30D9BB811AB25174001DB228 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D9BB801AB25174001DB228 /* main.m */; };
+		30D9BB841AB25174001DB228 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D9BB831AB25174001DB228 /* AppDelegate.m */; };
+		30D9BB871AB25174001DB228 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D9BB861AB25174001DB228 /* ViewController.m */; };
+		30D9BB8A1AB25174001DB228 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BB881AB25174001DB228 /* Main.storyboard */; };
+		30D9BB8C1AB25174001DB228 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BB8B1AB25174001DB228 /* Images.xcassets */; };
+		30D9BB8F1AB25174001DB228 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BB8D1AB25174001DB228 /* LaunchScreen.xib */; };
+		30D9BB9B1AB25175001DB228 /* PhotoMakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D9BB9A1AB25175001DB228 /* PhotoMakerTests.m */; };
+		30D9BC021AB262BA001DB228 /* BiDirPolicy.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBDD1AB262BA001DB228 /* BiDirPolicy.idl */; };
+		30D9BC031AB262BA001DB228 /* CONV_FRAME.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBDE1AB262BA001DB228 /* CONV_FRAME.idl */; };
+		30D9BC041AB262BA001DB228 /* CORBA_Context.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBDF1AB262BA001DB228 /* CORBA_Context.idl */; };
+		30D9BC051AB262BA001DB228 /* CORBA_Current.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBE01AB262BA001DB228 /* CORBA_Current.idl */; };
+		30D9BC061AB262BA001DB228 /* CORBA_CustomMarshal.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBE11AB262BA001DB228 /* CORBA_CustomMarshal.idl */; };
+		30D9BC071AB262BA001DB228 /* CORBA_DomainManager.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBE21AB262BA001DB228 /* CORBA_DomainManager.idl */; };
+		30D9BC081AB262BA001DB228 /* CORBA_Interceptor.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBE31AB262BA001DB228 /* CORBA_Interceptor.idl */; };
+		30D9BC091AB262BA001DB228 /* CORBA_InterfaceRepository.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBE41AB262BA001DB228 /* CORBA_InterfaceRepository.idl */; };
+		30D9BC0A1AB262BA001DB228 /* CORBA_NVList.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBE51AB262BA001DB228 /* CORBA_NVList.idl */; };
+		30D9BC0B1AB262BA001DB228 /* CORBA_Object.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBE61AB262BA001DB228 /* CORBA_Object.idl */; };
+		30D9BC0C1AB262BA001DB228 /* CORBA_ORB.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBE71AB262BA001DB228 /* CORBA_ORB.idl */; };
+		30D9BC0D1AB262BA001DB228 /* CORBA_ORB_init.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBE81AB262BA001DB228 /* CORBA_ORB_init.idl */; };
+		30D9BC0E1AB262BA001DB228 /* CORBA_Policy.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBE91AB262BA001DB228 /* CORBA_Policy.idl */; };
+		30D9BC0F1AB262BA001DB228 /* CORBA_Request.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBEA1AB262BA001DB228 /* CORBA_Request.idl */; };
+		30D9BC101AB262BA001DB228 /* CORBA_ServerRequest.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBEB1AB262BA001DB228 /* CORBA_ServerRequest.idl */; };
+		30D9BC111AB262BA001DB228 /* CORBA_StandardExceptions.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBEC1AB262BA001DB228 /* CORBA_StandardExceptions.idl */; };
+		30D9BC121AB262BA001DB228 /* CORBA_Stream.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBED1AB262BA001DB228 /* CORBA_Stream.idl */; };
+		30D9BC131AB262BA001DB228 /* CORBA_ValueBase.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBEE1AB262BA001DB228 /* CORBA_ValueBase.idl */; };
+		30D9BC141AB262BA001DB228 /* CosEventChannelAdmin.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBEF1AB262BA001DB228 /* CosEventChannelAdmin.idl */; };
+		30D9BC151AB262BA001DB228 /* CosEventComm.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBF01AB262BA001DB228 /* CosEventComm.idl */; };
+		30D9BC161AB262BA001DB228 /* CosNaming.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBF11AB262BA001DB228 /* CosNaming.idl */; };
+		30D9BC171AB262BA001DB228 /* DCE_CIOPSecurity.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBF21AB262BA001DB228 /* DCE_CIOPSecurity.idl */; };
+		30D9BC181AB262BA001DB228 /* default.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBF31AB262BA001DB228 /* default.idl */; };
+		30D9BC191AB262BA001DB228 /* DynAny.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBF41AB262BA001DB228 /* DynAny.idl */; };
+		30D9BC1A1AB262BA001DB228 /* GIOP.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBF51AB262BA001DB228 /* GIOP.idl */; };
+		30D9BC1B1AB262BA001DB228 /* IIOP.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBF61AB262BA001DB228 /* IIOP.idl */; };
+		30D9BC1C1AB262BA001DB228 /* IOP.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBF71AB262BA001DB228 /* IOP.idl */; };
+		30D9BC1D1AB262BA001DB228 /* IOP_DCE.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBF81AB262BA001DB228 /* IOP_DCE.idl */; };
+		30D9BC1E1AB262BA001DB228 /* ir.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBF91AB262BA001DB228 /* ir.idl */; };
+		30D9BC1F1AB262BA001DB228 /* Messaging.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBFA1AB262BA001DB228 /* Messaging.idl */; };
+		30D9BC201AB262BA001DB228 /* orb.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBFB1AB262BA001DB228 /* orb.idl */; };
+		30D9BC211AB262BA001DB228 /* PortableInterceptor.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBFC1AB262BA001DB228 /* PortableInterceptor.idl */; };
+		30D9BC221AB262BA001DB228 /* PortableServer.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBFD1AB262BA001DB228 /* PortableServer.idl */; };
+		30D9BC231AB262BA001DB228 /* pseudo_orb.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBFE1AB262BA001DB228 /* pseudo_orb.idl */; };
+		30D9BC241AB262BA001DB228 /* ReferenceData.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BBFF1AB262BA001DB228 /* ReferenceData.idl */; };
+		30D9BC251AB262BA001DB228 /* SendingContext.idl in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BC001AB262BA001DB228 /* SendingContext.idl */; };
+		30D9BC261AB262BA001DB228 /* libadorb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D9BC011AB262BA001DB228 /* libadorb.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		30D9BB951AB25175001DB228 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 30D9BB731AB25174001DB228 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30D9BB7A1AB25174001DB228;
+			remoteInfo = PhotoMaker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		30AF96A61AB343E0005ACE05 /* CORBAManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CORBAManager.h; sourceTree = "<group>"; };
+		30AF96A71AB343E0005ACE05 /* CORBAManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CORBAManager.m; sourceTree = "<group>"; };
+		30AF96AA1AB37905005ACE05 /* HelloWorld.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.idl; sourceTree = "<group>"; };
+		30D9BB7B1AB25174001DB228 /* PhotoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D9BB7F1AB25174001DB228 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30D9BB801AB25174001DB228 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		30D9BB821AB25174001DB228 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		30D9BB831AB25174001DB228 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		30D9BB851AB25174001DB228 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		30D9BB861AB25174001DB228 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		30D9BB891AB25174001DB228 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		30D9BB8B1AB25174001DB228 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		30D9BB8E1AB25174001DB228 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		30D9BB941AB25175001DB228 /* PhotoMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D9BB991AB25175001DB228 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30D9BB9A1AB25175001DB228 /* PhotoMakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoMakerTests.m; sourceTree = "<group>"; };
+		30D9BBAB1AB262BA001DB228 /* ADORB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADORB.h; sourceTree = "<group>"; };
+		30D9BBAC1AB262BA001DB228 /* CORBAException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CORBAException.h; sourceTree = "<group>"; };
+		30D9BBAD1AB262BA001DB228 /* CORBAObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CORBAObject.h; sourceTree = "<group>"; };
+		30D9BBAE1AB262BA001DB228 /* IDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDL.h; sourceTree = "<group>"; };
+		30D9BBAF1AB262BA001DB228 /* IDLAbstractBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLAbstractBase.h; sourceTree = "<group>"; };
+		30D9BBB01AB262BA001DB228 /* IDLAny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLAny.h; sourceTree = "<group>"; };
+		30D9BBB11AB262BA001DB228 /* IDLAnyObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLAnyObject.h; sourceTree = "<group>"; };
+		30D9BBB21AB262BA001DB228 /* IDLArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLArgument.h; sourceTree = "<group>"; };
+		30D9BBB31AB262BA001DB228 /* IDLArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLArray.h; sourceTree = "<group>"; };
+		30D9BBB41AB262BA001DB228 /* IDLArrayIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLArrayIdentifier.h; sourceTree = "<group>"; };
+		30D9BBB51AB262BA001DB228 /* IDLAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLAttribute.h; sourceTree = "<group>"; };
+		30D9BBB61AB262BA001DB228 /* IDLDefaultCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDefaultCase.h; sourceTree = "<group>"; };
+		30D9BBB71AB262BA001DB228 /* IDLDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDefinition.h; sourceTree = "<group>"; };
+		30D9BBB81AB262BA001DB228 /* IDLDefinitionScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLDefinitionScope.h; sourceTree = "<group>"; };
+		30D9BBB91AB262BA001DB228 /* IDLEncapsulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLEncapsulation.h; sourceTree = "<group>"; };
+		30D9BBBA1AB262BA001DB228 /* IDLEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLEnum.h; sourceTree = "<group>"; };
+		30D9BBBB1AB262BA001DB228 /* IDLException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLException.h; sourceTree = "<group>"; };
+		30D9BBBC1AB262BA001DB228 /* IDLFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLFunction.h; sourceTree = "<group>"; };
+		30D9BBBD1AB262BA001DB228 /* IDLFunction_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLFunction_Private.h; sourceTree = "<group>"; };
+		30D9BBBE1AB262BA001DB228 /* IDLGIOPVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLGIOPVersion.h; sourceTree = "<group>"; };
+		30D9BBBF1AB262BA001DB228 /* IDLInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLInterface.h; sourceTree = "<group>"; };
+		30D9BBC01AB262BA001DB228 /* IDLInterface_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLInterface_Private.h; sourceTree = "<group>"; };
+		30D9BBC11AB262BA001DB228 /* IDLIOPProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLIOPProfile.h; sourceTree = "<group>"; };
+		30D9BBC21AB262BA001DB228 /* IDLLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLLink.h; sourceTree = "<group>"; };
+		30D9BBC31AB262BA001DB228 /* IDLNameComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLNameComponent.h; sourceTree = "<group>"; };
+		30D9BBC41AB262BA001DB228 /* IDLNamedDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLNamedDefinition.h; sourceTree = "<group>"; };
+		30D9BBC51AB262BA001DB228 /* IDLNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLNative.h; sourceTree = "<group>"; };
+		30D9BBC61AB262BA001DB228 /* IDLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLObject.h; sourceTree = "<group>"; };
+		30D9BBC71AB262BA001DB228 /* IDLOctetArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLOctetArray.h; sourceTree = "<group>"; };
+		30D9BBC81AB262BA001DB228 /* IDLOctetSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLOctetSequence.h; sourceTree = "<group>"; };
+		30D9BBC91AB262BA001DB228 /* IDLOctetStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLOctetStream.h; sourceTree = "<group>"; };
+		30D9BBCA1AB262BA001DB228 /* IDLPrimitive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLPrimitive.h; sourceTree = "<group>"; };
+		30D9BBCB1AB262BA001DB228 /* IDLProfileBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLProfileBody.h; sourceTree = "<group>"; };
+		30D9BBCC1AB262BA001DB228 /* IDLReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLReference.h; sourceTree = "<group>"; };
+		30D9BBCD1AB262BA001DB228 /* IDLSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLSequence.h; sourceTree = "<group>"; };
+		30D9BBCE1AB262BA001DB228 /* IDLServiceContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLServiceContext.h; sourceTree = "<group>"; };
+		30D9BBCF1AB262BA001DB228 /* IDLStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLStream.h; sourceTree = "<group>"; };
+		30D9BBD01AB262BA001DB228 /* IDLStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLStruct.h; sourceTree = "<group>"; };
+		30D9BBD11AB262BA001DB228 /* IDLTaggedComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLTaggedComponent.h; sourceTree = "<group>"; };
+		30D9BBD21AB262BA001DB228 /* IDLTCKind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLTCKind.h; sourceTree = "<group>"; };
+		30D9BBD31AB262BA001DB228 /* IDLTypedef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLTypedef.h; sourceTree = "<group>"; };
+		30D9BBD41AB262BA001DB228 /* IDLTypedValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLTypedValue.h; sourceTree = "<group>"; };
+		30D9BBD51AB262BA001DB228 /* IDLUnion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLUnion.h; sourceTree = "<group>"; };
+		30D9BBD61AB262BA001DB228 /* IDLValueClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLValueClass.h; sourceTree = "<group>"; };
+		30D9BBD71AB262BA001DB228 /* IDLValueMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLValueMember.h; sourceTree = "<group>"; };
+		30D9BBD81AB262BA001DB228 /* IDLValueObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLValueObject.h; sourceTree = "<group>"; };
+		30D9BBD91AB262BA001DB228 /* IDLValueType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLValueType.h; sourceTree = "<group>"; };
+		30D9BBDA1AB262BA001DB228 /* ORB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORB.h; sourceTree = "<group>"; };
+		30D9BBDB1AB262BA001DB228 /* ORBNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORBNotificationCenter.h; sourceTree = "<group>"; };
+		30D9BBDD1AB262BA001DB228 /* BiDirPolicy.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BiDirPolicy.idl; sourceTree = "<group>"; };
+		30D9BBDE1AB262BA001DB228 /* CONV_FRAME.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CONV_FRAME.idl; sourceTree = "<group>"; };
+		30D9BBDF1AB262BA001DB228 /* CORBA_Context.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_Context.idl; sourceTree = "<group>"; };
+		30D9BBE01AB262BA001DB228 /* CORBA_Current.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_Current.idl; sourceTree = "<group>"; };
+		30D9BBE11AB262BA001DB228 /* CORBA_CustomMarshal.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_CustomMarshal.idl; sourceTree = "<group>"; };
+		30D9BBE21AB262BA001DB228 /* CORBA_DomainManager.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_DomainManager.idl; sourceTree = "<group>"; };
+		30D9BBE31AB262BA001DB228 /* CORBA_Interceptor.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_Interceptor.idl; sourceTree = "<group>"; };
+		30D9BBE41AB262BA001DB228 /* CORBA_InterfaceRepository.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_InterfaceRepository.idl; sourceTree = "<group>"; };
+		30D9BBE51AB262BA001DB228 /* CORBA_NVList.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_NVList.idl; sourceTree = "<group>"; };
+		30D9BBE61AB262BA001DB228 /* CORBA_Object.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_Object.idl; sourceTree = "<group>"; };
+		30D9BBE71AB262BA001DB228 /* CORBA_ORB.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_ORB.idl; sourceTree = "<group>"; };
+		30D9BBE81AB262BA001DB228 /* CORBA_ORB_init.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_ORB_init.idl; sourceTree = "<group>"; };
+		30D9BBE91AB262BA001DB228 /* CORBA_Policy.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_Policy.idl; sourceTree = "<group>"; };
+		30D9BBEA1AB262BA001DB228 /* CORBA_Request.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_Request.idl; sourceTree = "<group>"; };
+		30D9BBEB1AB262BA001DB228 /* CORBA_ServerRequest.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_ServerRequest.idl; sourceTree = "<group>"; };
+		30D9BBEC1AB262BA001DB228 /* CORBA_StandardExceptions.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_StandardExceptions.idl; sourceTree = "<group>"; };
+		30D9BBED1AB262BA001DB228 /* CORBA_Stream.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_Stream.idl; sourceTree = "<group>"; };
+		30D9BBEE1AB262BA001DB228 /* CORBA_ValueBase.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CORBA_ValueBase.idl; sourceTree = "<group>"; };
+		30D9BBEF1AB262BA001DB228 /* CosEventChannelAdmin.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CosEventChannelAdmin.idl; sourceTree = "<group>"; };
+		30D9BBF01AB262BA001DB228 /* CosEventComm.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CosEventComm.idl; sourceTree = "<group>"; };
+		30D9BBF11AB262BA001DB228 /* CosNaming.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CosNaming.idl; sourceTree = "<group>"; };
+		30D9BBF21AB262BA001DB228 /* DCE_CIOPSecurity.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DCE_CIOPSecurity.idl; sourceTree = "<group>"; };
+		30D9BBF31AB262BA001DB228 /* default.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = default.idl; sourceTree = "<group>"; };
+		30D9BBF41AB262BA001DB228 /* DynAny.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DynAny.idl; sourceTree = "<group>"; };
+		30D9BBF51AB262BA001DB228 /* GIOP.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GIOP.idl; sourceTree = "<group>"; };
+		30D9BBF61AB262BA001DB228 /* IIOP.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IIOP.idl; sourceTree = "<group>"; };
+		30D9BBF71AB262BA001DB228 /* IOP.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IOP.idl; sourceTree = "<group>"; };
+		30D9BBF81AB262BA001DB228 /* IOP_DCE.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IOP_DCE.idl; sourceTree = "<group>"; };
+		30D9BBF91AB262BA001DB228 /* ir.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ir.idl; sourceTree = "<group>"; };
+		30D9BBFA1AB262BA001DB228 /* Messaging.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Messaging.idl; sourceTree = "<group>"; };
+		30D9BBFB1AB262BA001DB228 /* orb.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = orb.idl; sourceTree = "<group>"; };
+		30D9BBFC1AB262BA001DB228 /* PortableInterceptor.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PortableInterceptor.idl; sourceTree = "<group>"; };
+		30D9BBFD1AB262BA001DB228 /* PortableServer.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PortableServer.idl; sourceTree = "<group>"; };
+		30D9BBFE1AB262BA001DB228 /* pseudo_orb.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pseudo_orb.idl; sourceTree = "<group>"; };
+		30D9BBFF1AB262BA001DB228 /* ReferenceData.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReferenceData.idl; sourceTree = "<group>"; };
+		30D9BC001AB262BA001DB228 /* SendingContext.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SendingContext.idl; sourceTree = "<group>"; };
+		30D9BC011AB262BA001DB228 /* libadorb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libadorb.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		30D9BB781AB25174001DB228 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D9BC261AB262BA001DB228 /* libadorb.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D9BB911AB25175001DB228 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		30AF96A91AB378DA005ACE05 /* IDLS */ = {
+			isa = PBXGroup;
+			children = (
+				30AF96AA1AB37905005ACE05 /* HelloWorld.idl */,
+			);
+			name = IDLS;
+			sourceTree = "<group>";
+		};
+		30D9BB721AB25174001DB228 = {
+			isa = PBXGroup;
+			children = (
+				30D9BB7D1AB25174001DB228 /* PhotoMaker */,
+				30D9BB971AB25175001DB228 /* PhotoMakerTests */,
+				30D9BB7C1AB25174001DB228 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		30D9BB7C1AB25174001DB228 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BB7B1AB25174001DB228 /* PhotoMaker.app */,
+				30D9BB941AB25175001DB228 /* PhotoMakerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		30D9BB7D1AB25174001DB228 /* PhotoMaker */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BBA81AB26297001DB228 /* Third Party */,
+				30D9BBA51AB26207001DB228 /* CORBA Module */,
+				30D9BB821AB25174001DB228 /* AppDelegate.h */,
+				30D9BB831AB25174001DB228 /* AppDelegate.m */,
+				30D9BB851AB25174001DB228 /* ViewController.h */,
+				30D9BB861AB25174001DB228 /* ViewController.m */,
+				30D9BB881AB25174001DB228 /* Main.storyboard */,
+				30D9BB8B1AB25174001DB228 /* Images.xcassets */,
+				30D9BB8D1AB25174001DB228 /* LaunchScreen.xib */,
+				30D9BB7E1AB25174001DB228 /* Supporting Files */,
+			);
+			path = PhotoMaker;
+			sourceTree = "<group>";
+		};
+		30D9BB7E1AB25174001DB228 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BB7F1AB25174001DB228 /* Info.plist */,
+				30D9BB801AB25174001DB228 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		30D9BB971AB25175001DB228 /* PhotoMakerTests */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BB9A1AB25175001DB228 /* PhotoMakerTests.m */,
+				30D9BB981AB25175001DB228 /* Supporting Files */,
+			);
+			path = PhotoMakerTests;
+			sourceTree = "<group>";
+		};
+		30D9BB981AB25175001DB228 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BB991AB25175001DB228 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		30D9BBA51AB26207001DB228 /* CORBA Module */ = {
+			isa = PBXGroup;
+			children = (
+				30AF96A91AB378DA005ACE05 /* IDLS */,
+				30AF96A61AB343E0005ACE05 /* CORBAManager.h */,
+				30AF96A71AB343E0005ACE05 /* CORBAManager.m */,
+			);
+			name = "CORBA Module";
+			sourceTree = "<group>";
+		};
+		30D9BBA81AB26297001DB228 /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BBA91AB262BA001DB228 /* CORBA */,
+			);
+			path = "Third Party";
+			sourceTree = "<group>";
+		};
+		30D9BBA91AB262BA001DB228 /* CORBA */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BBAA1AB262BA001DB228 /* ADORB */,
+				30D9BBDC1AB262BA001DB228 /* idls */,
+				30D9BC011AB262BA001DB228 /* libadorb.a */,
+			);
+			path = CORBA;
+			sourceTree = "<group>";
+		};
+		30D9BBAA1AB262BA001DB228 /* ADORB */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BBAB1AB262BA001DB228 /* ADORB.h */,
+				30D9BBAC1AB262BA001DB228 /* CORBAException.h */,
+				30D9BBAD1AB262BA001DB228 /* CORBAObject.h */,
+				30D9BBAE1AB262BA001DB228 /* IDL.h */,
+				30D9BBAF1AB262BA001DB228 /* IDLAbstractBase.h */,
+				30D9BBB01AB262BA001DB228 /* IDLAny.h */,
+				30D9BBB11AB262BA001DB228 /* IDLAnyObject.h */,
+				30D9BBB21AB262BA001DB228 /* IDLArgument.h */,
+				30D9BBB31AB262BA001DB228 /* IDLArray.h */,
+				30D9BBB41AB262BA001DB228 /* IDLArrayIdentifier.h */,
+				30D9BBB51AB262BA001DB228 /* IDLAttribute.h */,
+				30D9BBB61AB262BA001DB228 /* IDLDefaultCase.h */,
+				30D9BBB71AB262BA001DB228 /* IDLDefinition.h */,
+				30D9BBB81AB262BA001DB228 /* IDLDefinitionScope.h */,
+				30D9BBB91AB262BA001DB228 /* IDLEncapsulation.h */,
+				30D9BBBA1AB262BA001DB228 /* IDLEnum.h */,
+				30D9BBBB1AB262BA001DB228 /* IDLException.h */,
+				30D9BBBC1AB262BA001DB228 /* IDLFunction.h */,
+				30D9BBBD1AB262BA001DB228 /* IDLFunction_Private.h */,
+				30D9BBBE1AB262BA001DB228 /* IDLGIOPVersion.h */,
+				30D9BBBF1AB262BA001DB228 /* IDLInterface.h */,
+				30D9BBC01AB262BA001DB228 /* IDLInterface_Private.h */,
+				30D9BBC11AB262BA001DB228 /* IDLIOPProfile.h */,
+				30D9BBC21AB262BA001DB228 /* IDLLink.h */,
+				30D9BBC31AB262BA001DB228 /* IDLNameComponent.h */,
+				30D9BBC41AB262BA001DB228 /* IDLNamedDefinition.h */,
+				30D9BBC51AB262BA001DB228 /* IDLNative.h */,
+				30D9BBC61AB262BA001DB228 /* IDLObject.h */,
+				30D9BBC71AB262BA001DB228 /* IDLOctetArray.h */,
+				30D9BBC81AB262BA001DB228 /* IDLOctetSequence.h */,
+				30D9BBC91AB262BA001DB228 /* IDLOctetStream.h */,
+				30D9BBCA1AB262BA001DB228 /* IDLPrimitive.h */,
+				30D9BBCB1AB262BA001DB228 /* IDLProfileBody.h */,
+				30D9BBCC1AB262BA001DB228 /* IDLReference.h */,
+				30D9BBCD1AB262BA001DB228 /* IDLSequence.h */,
+				30D9BBCE1AB262BA001DB228 /* IDLServiceContext.h */,
+				30D9BBCF1AB262BA001DB228 /* IDLStream.h */,
+				30D9BBD01AB262BA001DB228 /* IDLStruct.h */,
+				30D9BBD11AB262BA001DB228 /* IDLTaggedComponent.h */,
+				30D9BBD21AB262BA001DB228 /* IDLTCKind.h */,
+				30D9BBD31AB262BA001DB228 /* IDLTypedef.h */,
+				30D9BBD41AB262BA001DB228 /* IDLTypedValue.h */,
+				30D9BBD51AB262BA001DB228 /* IDLUnion.h */,
+				30D9BBD61AB262BA001DB228 /* IDLValueClass.h */,
+				30D9BBD71AB262BA001DB228 /* IDLValueMember.h */,
+				30D9BBD81AB262BA001DB228 /* IDLValueObject.h */,
+				30D9BBD91AB262BA001DB228 /* IDLValueType.h */,
+				30D9BBDA1AB262BA001DB228 /* ORB.h */,
+				30D9BBDB1AB262BA001DB228 /* ORBNotificationCenter.h */,
+			);
+			path = ADORB;
+			sourceTree = "<group>";
+		};
+		30D9BBDC1AB262BA001DB228 /* idls */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BBDD1AB262BA001DB228 /* BiDirPolicy.idl */,
+				30D9BBDE1AB262BA001DB228 /* CONV_FRAME.idl */,
+				30D9BBDF1AB262BA001DB228 /* CORBA_Context.idl */,
+				30D9BBE01AB262BA001DB228 /* CORBA_Current.idl */,
+				30D9BBE11AB262BA001DB228 /* CORBA_CustomMarshal.idl */,
+				30D9BBE21AB262BA001DB228 /* CORBA_DomainManager.idl */,
+				30D9BBE31AB262BA001DB228 /* CORBA_Interceptor.idl */,
+				30D9BBE41AB262BA001DB228 /* CORBA_InterfaceRepository.idl */,
+				30D9BBE51AB262BA001DB228 /* CORBA_NVList.idl */,
+				30D9BBE61AB262BA001DB228 /* CORBA_Object.idl */,
+				30D9BBE71AB262BA001DB228 /* CORBA_ORB.idl */,
+				30D9BBE81AB262BA001DB228 /* CORBA_ORB_init.idl */,
+				30D9BBE91AB262BA001DB228 /* CORBA_Policy.idl */,
+				30D9BBEA1AB262BA001DB228 /* CORBA_Request.idl */,
+				30D9BBEB1AB262BA001DB228 /* CORBA_ServerRequest.idl */,
+				30D9BBEC1AB262BA001DB228 /* CORBA_StandardExceptions.idl */,
+				30D9BBED1AB262BA001DB228 /* CORBA_Stream.idl */,
+				30D9BBEE1AB262BA001DB228 /* CORBA_ValueBase.idl */,
+				30D9BBEF1AB262BA001DB228 /* CosEventChannelAdmin.idl */,
+				30D9BBF01AB262BA001DB228 /* CosEventComm.idl */,
+				30D9BBF11AB262BA001DB228 /* CosNaming.idl */,
+				30D9BBF21AB262BA001DB228 /* DCE_CIOPSecurity.idl */,
+				30D9BBF31AB262BA001DB228 /* default.idl */,
+				30D9BBF41AB262BA001DB228 /* DynAny.idl */,
+				30D9BBF51AB262BA001DB228 /* GIOP.idl */,
+				30D9BBF61AB262BA001DB228 /* IIOP.idl */,
+				30D9BBF71AB262BA001DB228 /* IOP.idl */,
+				30D9BBF81AB262BA001DB228 /* IOP_DCE.idl */,
+				30D9BBF91AB262BA001DB228 /* ir.idl */,
+				30D9BBFA1AB262BA001DB228 /* Messaging.idl */,
+				30D9BBFB1AB262BA001DB228 /* orb.idl */,
+				30D9BBFC1AB262BA001DB228 /* PortableInterceptor.idl */,
+				30D9BBFD1AB262BA001DB228 /* PortableServer.idl */,
+				30D9BBFE1AB262BA001DB228 /* pseudo_orb.idl */,
+				30D9BBFF1AB262BA001DB228 /* ReferenceData.idl */,
+				30D9BC001AB262BA001DB228 /* SendingContext.idl */,
+			);
+			path = idls;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		30D9BB7A1AB25174001DB228 /* PhotoMaker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30D9BB9E1AB25175001DB228 /* Build configuration list for PBXNativeTarget "PhotoMaker" */;
+			buildPhases = (
+				30D9BB771AB25174001DB228 /* Sources */,
+				30D9BB781AB25174001DB228 /* Frameworks */,
+				30D9BB791AB25174001DB228 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhotoMaker;
+			productName = PhotoMaker;
+			productReference = 30D9BB7B1AB25174001DB228 /* PhotoMaker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		30D9BB931AB25175001DB228 /* PhotoMakerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30D9BBA11AB25175001DB228 /* Build configuration list for PBXNativeTarget "PhotoMakerTests" */;
+			buildPhases = (
+				30D9BB901AB25175001DB228 /* Sources */,
+				30D9BB911AB25175001DB228 /* Frameworks */,
+				30D9BB921AB25175001DB228 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30D9BB961AB25175001DB228 /* PBXTargetDependency */,
+			);
+			name = PhotoMakerTests;
+			productName = PhotoMakerTests;
+			productReference = 30D9BB941AB25175001DB228 /* PhotoMakerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		30D9BB731AB25174001DB228 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = Distvi;
+				TargetAttributes = {
+					30D9BB7A1AB25174001DB228 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					30D9BB931AB25175001DB228 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 30D9BB7A1AB25174001DB228;
+					};
+				};
+			};
+			buildConfigurationList = 30D9BB761AB25174001DB228 /* Build configuration list for PBXProject "PhotoMaker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 30D9BB721AB25174001DB228;
+			productRefGroup = 30D9BB7C1AB25174001DB228 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				30D9BB7A1AB25174001DB228 /* PhotoMaker */,
+				30D9BB931AB25175001DB228 /* PhotoMakerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		30D9BB791AB25174001DB228 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D9BC101AB262BA001DB228 /* CORBA_ServerRequest.idl in Resources */,
+				30D9BC241AB262BA001DB228 /* ReferenceData.idl in Resources */,
+				30D9BC151AB262BA001DB228 /* CosEventComm.idl in Resources */,
+				30D9BC1B1AB262BA001DB228 /* IIOP.idl in Resources */,
+				30D9BC131AB262BA001DB228 /* CORBA_ValueBase.idl in Resources */,
+				30D9BC051AB262BA001DB228 /* CORBA_Current.idl in Resources */,
+				30D9BC081AB262BA001DB228 /* CORBA_Interceptor.idl in Resources */,
+				30D9BC181AB262BA001DB228 /* default.idl in Resources */,
+				30D9BC141AB262BA001DB228 /* CosEventChannelAdmin.idl in Resources */,
+				30D9BC1E1AB262BA001DB228 /* ir.idl in Resources */,
+				30D9BC0D1AB262BA001DB228 /* CORBA_ORB_init.idl in Resources */,
+				30D9BC191AB262BA001DB228 /* DynAny.idl in Resources */,
+				30D9BC211AB262BA001DB228 /* PortableInterceptor.idl in Resources */,
+				30D9BC0B1AB262BA001DB228 /* CORBA_Object.idl in Resources */,
+				30D9BC251AB262BA001DB228 /* SendingContext.idl in Resources */,
+				30D9BC021AB262BA001DB228 /* BiDirPolicy.idl in Resources */,
+				30D9BC091AB262BA001DB228 /* CORBA_InterfaceRepository.idl in Resources */,
+				30D9BC041AB262BA001DB228 /* CORBA_Context.idl in Resources */,
+				30D9BC201AB262BA001DB228 /* orb.idl in Resources */,
+				30D9BC161AB262BA001DB228 /* CosNaming.idl in Resources */,
+				30D9BC111AB262BA001DB228 /* CORBA_StandardExceptions.idl in Resources */,
+				30D9BC231AB262BA001DB228 /* pseudo_orb.idl in Resources */,
+				30D9BC0A1AB262BA001DB228 /* CORBA_NVList.idl in Resources */,
+				30D9BC1F1AB262BA001DB228 /* Messaging.idl in Resources */,
+				30D9BC171AB262BA001DB228 /* DCE_CIOPSecurity.idl in Resources */,
+				30AF96AB1AB37905005ACE05 /* HelloWorld.idl in Resources */,
+				30D9BB8A1AB25174001DB228 /* Main.storyboard in Resources */,
+				30D9BC031AB262BA001DB228 /* CONV_FRAME.idl in Resources */,
+				30D9BC0C1AB262BA001DB228 /* CORBA_ORB.idl in Resources */,
+				30D9BB8F1AB25174001DB228 /* LaunchScreen.xib in Resources */,
+				30D9BB8C1AB25174001DB228 /* Images.xcassets in Resources */,
+				30D9BC0E1AB262BA001DB228 /* CORBA_Policy.idl in Resources */,
+				30D9BC1C1AB262BA001DB228 /* IOP.idl in Resources */,
+				30D9BC221AB262BA001DB228 /* PortableServer.idl in Resources */,
+				30D9BC0F1AB262BA001DB228 /* CORBA_Request.idl in Resources */,
+				30D9BC121AB262BA001DB228 /* CORBA_Stream.idl in Resources */,
+				30D9BC061AB262BA001DB228 /* CORBA_CustomMarshal.idl in Resources */,
+				30D9BC1A1AB262BA001DB228 /* GIOP.idl in Resources */,
+				30D9BC1D1AB262BA001DB228 /* IOP_DCE.idl in Resources */,
+				30D9BC071AB262BA001DB228 /* CORBA_DomainManager.idl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D9BB921AB25175001DB228 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		30D9BB771AB25174001DB228 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D9BB871AB25174001DB228 /* ViewController.m in Sources */,
+				30D9BB841AB25174001DB228 /* AppDelegate.m in Sources */,
+				30D9BB811AB25174001DB228 /* main.m in Sources */,
+				30AF96A81AB343E0005ACE05 /* CORBAManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D9BB901AB25175001DB228 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D9BB9B1AB25175001DB228 /* PhotoMakerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		30D9BB961AB25175001DB228 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30D9BB7A1AB25174001DB228 /* PhotoMaker */;
+			targetProxy = 30D9BB951AB25175001DB228 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		30D9BB881AB25174001DB228 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30D9BB891AB25174001DB228 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		30D9BB8D1AB25174001DB228 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30D9BB8E1AB25174001DB228 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		30D9BB9C1AB25175001DB228 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		30D9BB9D1AB25175001DB228 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		30D9BB9F1AB25175001DB228 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PhotoMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PhotoMaker/Third",
+					Party/CORBA,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		30D9BBA01AB25175001DB228 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PhotoMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PhotoMaker/Third",
+					Party/CORBA,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		30D9BBA21AB25175001DB228 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PhotoMakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoMaker.app/PhotoMaker";
+			};
+			name = Debug;
+		};
+		30D9BBA31AB25175001DB228 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PhotoMakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoMaker.app/PhotoMaker";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30D9BB761AB25174001DB228 /* Build configuration list for PBXProject "PhotoMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D9BB9C1AB25175001DB228 /* Debug */,
+				30D9BB9D1AB25175001DB228 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30D9BB9E1AB25175001DB228 /* Build configuration list for PBXNativeTarget "PhotoMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D9BB9F1AB25175001DB228 /* Debug */,
+				30D9BBA01AB25175001DB228 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30D9BBA11AB25175001DB228 /* Build configuration list for PBXNativeTarget "PhotoMakerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D9BBA21AB25175001DB228 /* Debug */,
+				30D9BBA31AB25175001DB228 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 30D9BB731AB25174001DB228 /* Project object */;
+}

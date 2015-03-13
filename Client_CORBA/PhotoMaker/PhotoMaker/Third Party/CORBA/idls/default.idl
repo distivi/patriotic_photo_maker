@@ -1,0 +1,22 @@
+
+// default.idl
+// Import here all the idls that should be parsed first
+
+#pragma prefix omg.org
+
+#import "orb.idl"
+
+#import "CosNaming.idl"
+
+#import "GIOP.idl"
+#import "CORBA_Object.idl"
+#import "CONV_FRAME.idl"
+//#import "DynAny.idl"
+#import "BiDirPolicy.idl"
+#import "CosEventChannelAdmin.idl"
+#import "CosEventComm.idl"
+//#import "ReferenceData.idl"
+#import "SendingContext.idl"
+#import "PortableServer.idl"
+#import "Messaging.idl"
+#import "PortableInterceptor.idl"

@@ -1,0 +1,108 @@
+//Naming Service v1.0 described in CORBAservices: Common
+//  Object Services Specification, chapter 3
+//
+// OMG IDL for CosNaming Module, p 3-6
+
+#pragma prefix "omg.org"
+
+module CosNaming
+{
+  typedef string Istring;
+  struct NameComponent
+  {
+    Istring id;
+    Istring kind;
+  };
+
+  typedef sequence <NameComponent> Name;
+
+  enum BindingType
+  {
+    nobject,
+    ncontext
+  };
+
+  struct Binding
+  {
+    Name binding_name;
+    BindingType binding_type;                                  
+  };
+
+  typedef sequence <Binding> BindingList;
+
+  interface BindingIterator;
+
+  interface NamingContext
+  {
+    enum NotFoundReason
+    {
+      missing_node,
+      not_context,
+      not_object
+    };
+
+    exception NotFound
+    {
+      NotFoundReason why;
+      Name rest_of_name;
+    };
+
+    exception CannotProceed
+    {
+      NamingContext cxt;
+      Name rest_of_name;
+    };
+
+    exception InvalidName{};
+    exception AlreadyBound {};
+    exception NotEmpty{};
+
+    void bind(in Name n, in Object object)
+      raises (NotFound, CannotProceed, InvalidName, AlreadyBound);
+    void rebind (in Name n, in Object object)   
+      raises (NotFound, CannotProceed, InvalidName);
+    void bind_context (in Name n, in NamingContext naming_context)               
+      raises (NotFound, CannotProceed, InvalidName, AlreadyBound);
+    void rebind_context (in Name n, in NamingContext naming_context)     
+      raises (NotFound, CannotProceed, InvalidName);
+    Object resolve (in Name n)
+      raises (NotFound, CannotProceed, InvalidName);
+    void unbind (in Name n)
+      raises (NotFound, CannotProceed, InvalidName);
+    NamingContext new_context ();
+    NamingContext bind_new_context (in Name n)
+      raises (NotFound, AlreadyBound, CannotProceed, InvalidName);
+    void destroy () raises(NotEmpty);
+    void list (in unsigned long how_many, 
+	       out BindingList binding_list, out BindingIterator binding_iterator);
+  };
+
+  interface BindingIterator
+  {
+    boolean next_one (out Binding b);
+    boolean next_n (in unsigned long how_many, out BindingList binding_list);
+    void destroy ();
+  };
+  
+  typedef string StringName;
+  typedef string URLString;
+  typedef string Address;
+  
+  exception InvalidAddress {};
+  
+  interface NamingContextExt:NamingContext
+  {
+    Object resolve_str(in StringName name) raises (NotFound, CannotProceed, InvalidName);
+    Name to_name(in StringName stringName) raises(InvalidName);
+    StringName to_string(in Name name) raises(InvalidName);
+    URLString to_url(in Address address, in StringName name) raises(InvalidAddress, InvalidName);
+  };
+};
+
+
+/*
+ * Local Variables:
+ * compile-command: "../oidl -a CosNaming.idl"
+ * End:
+ *
+ */

@@ -1,0 +1,1161 @@
+//File: DCE_CIOPSecurity.idl
+//Part of the Security Service
+
+#ifndef _DCE_CIOP_SECURITY_IDL
+#define _DCE_CIOP_SECURITY_IDL
+
+#include <IOP.idl>
+
+#pragma prefix "omg.org"
+
+module DCE_CIOPSecurity {
+	const IOP::ComponentId	TAG_DCE_SEC_MECH = 103;
+	typedef unsigned short	DCEAuthorization; 
+	const DCEAuthorization	DCEAuthorizationNone = 0;
+	const DCEAuthorization	DCEAuthorizationName = 1;
+	const DCEAuthorization	DCEAuthorizationDCE = 2;
+
+	struct DCESecurityMechanismInfo {
+		DCEAuthorization	          authorization_service;
+		sequence <IOP::TaggedComponent>   components;
+	};
+};
+#endif /* _DCE_CIOP_SECURITY_IDL */
+
+
+
+//File: NRService.idl
+//Part of the Security Service
+
+#ifndef _NR_SERVICE_IDL
+#define _NR_SERVICE_IDL
+
+#include <SecurityLevel2.idl>
+
+#pragma prefix "omg.org"
+
+module NRService  {
+
+    typedef Security::MechanismType 	NRMech;
+    typedef Security::ExtensibleFamily	NRPolicyId;
+
+    enum EvidenceType {     	
+        SecProofofCreation,
+        SecProofofReceipt,
+        SecProofofApproval,
+        SecProofofRetrieval,
+        SecProofofOrigin,
+        SecProofofDelivery,
+        SecNoEvidence     // used when request-only token desired
+    };
+
+    enum NRVerificationResult {
+        SecNRInvalid,
+        SecNRValid,
+        SecNRConditionallyValid 
+    };
+
+    // the following are used for evidence validity duration
+    typedef unsigned long   DurationInMinutes;
+
+    const DurationInMinutes DurationHour   = 60;
+    const DurationInMinutes DurationDay    = 1440;
+    const DurationInMinutes DurationWeek   = 10080; 
+    const DurationInMinutes DurationMonth = 43200;// 30 days;
+    const DurationInMinutes DurationYear   = 525600;//365 days;
+
+    typedef long TimeOffsetInMinutes; 
+
+    struct NRPolicyFeatures {
+         NRPolicyId         policy_id; 
+         unsigned long      policy_version;
+         NRMech             mechanism;
+    };
+
+    typedef sequence <NRPolicyFeatures> NRPolicyFeaturesList;
+
+    // features used when generating requests
+    struct RequestFeatures {
+        NRPolicyFeatures    requested_policy;
+        EvidenceType        requested_evidence;
+        string              requested_evidence_generators;
+        string              requested_evidence_recipients;
+        boolean             include_this_token_in_evidence;
+    };
+
+    struct EvidenceDescriptor {
+        EvidenceType        evidence_type;
+        DurationInMinutes   evidence_validity_duration;
+        boolean             must_use_trusted_time;
+    };
+
+    typedef sequence <EvidenceDescriptor> EvidenceDescriptorList;
+
+    struct AuthorityDescriptor {    
+        string              authority_name;
+        string              authority_role;
+        TimeOffsetInMinutes last_revocation_check_offset;
+                 // may be >0 or <0; add this to evid. gen. time to
+                 // get latest time at which mech. will check to see
+                 // if this authority's key has been revoked.
+    };
+
+    typedef sequence <AuthorityDescriptor> AuthorityDescriptorList;
+
+    struct MechanismDescriptor {
+        NRMech                  mech_type;
+        AuthorityDescriptorList authority_list;     
+        TimeOffsetInMinutes     max_time_skew; 
+                // max permissible difference between evid. gen. time
+                // and time of time service countersignature
+                // ignored if trusted time not reqd.
+    };
+
+    typedef sequence <MechanismDescriptor> MechanismDescriptorList;
+
+
+    interface NRCredentials : SecurityLevel2::Credentials{
+
+        boolean set_NR_features(
+            in   NRPolicyFeaturesList         requested_features,
+            out  NRPolicyFeaturesList         actual_features 
+        );
+
+        NRPolicyFeaturesList get_NR_features ();            
+
+        void generate_token(
+            in   Security::Opaque             input_buffer,
+            in   EvidenceType                 generate_evidence_type,
+            in   boolean                      include_data_in_token,
+            in   boolean                      generate_request,
+            in   RequestFeatures              request_features,
+            in   boolean                      input_buffer_complete,
+            out  Security::Opaque             nr_token,
+            out  Security::Opaque             evidence_check
+        );
+
+        NRVerificationResult verify_evidence(
+            in   Security::Opaque             input_token_buffer,
+            in   Security::Opaque             evidence_check, 
+            in   boolean                      form_complete_evidence,
+            in   boolean                      token_buffer_complete,
+            out  Security::Opaque             output_token,
+            out  Security::Opaque             data_included_in_token,
+            out  boolean                      evidence_is_complete,
+            out  boolean                      trusted_time_used,
+            out  Security::TimeT              complete_evidence_before,
+            out  Security::TimeT              complete_evidence_after
+        );
+
+        void get_token_details(
+            in   Security::Opaque             token_buffer,
+            in   boolean                      token_buffer_complete,
+            out  string                       token_generator_name,
+            out  NRPolicyFeatures             policy_features,
+            out  EvidenceType                 evidence_type,
+            out  Security::UtcT               evidence_generation_time,
+            out  Security::UtcT               evidence_valid_start_time,
+            out  DurationInMinutes            evidence_validity_duration,
+            out  boolean                      data_included_in_token,
+            out  boolean                      request_included_in_token,
+            out  RequestFeatures              request_features
+        );
+
+        boolean form_complete_evidence(
+            in   Security::Opaque             input_token,
+            out  Security::Opaque             output_token,
+            out  boolean                      trusted_time_used,
+            out  Security::TimeT              complete_evidence_before,
+            out  Security::TimeT              complete_evidence_after
+        );
+    };
+
+
+    interface NRPolicy : CORBA::Policy{
+
+        void get_NR_policy_info(
+            out  Security::ExtensibleFamily   NR_policy_id,
+            out  unsigned long                policy_version,
+            out  Security::TimeT              policy_effective_time,
+            out  Security::TimeT              policy_expiry_time,
+            out  EvidenceDescriptorList       supported_evidence_types,
+            out  MechanismDescriptorList      supported_mechanisms 
+        );
+
+        boolean set_NR_policy_info(
+            in   MechanismDescriptorList      requested_mechanisms,
+            out  MechanismDescriptorList      actual_mechanisms
+        );
+    };
+};
+#endif /* _NR_SERVICE_IDL */
+
+
+
+//File: SECIOP.idl
+//Part of the Security Service
+// Note: if your IDL compiler does not yet support the 
+//   "long long" data type, compile this module with the 
+//   preprocessor definition "NOLONGLONG". With many 
+//   compilers this would be done with a qualifier on 
+//   the command line, something like -DNOLONGLONG
+
+#ifndef _SECIOP_IDL_
+#define _SECIOP_IDL_
+
+#include <IOP.idl>
+#include <Security.idl>
+
+#pragma prefix "omg.org"
+
+module SECIOP {
+
+    const IOP::ComponentId TAG_GENERIC_SEC_MECH = 12;
+    const IOP::ComponentId TAG_ASSOCIATION_OPTIONS = 13;
+    const IOP::ComponentId TAG_SEC_NAME = 14;
+
+    struct TargetAssociationOptions{
+        Security::AssociationOptions    target_supports;
+        Security::AssociationOptions    target_requires;
+    };
+
+    struct GenericMechanismInfo {
+        sequence <octet>                security_mechanism_type;
+        sequence <octet>                mech_specific_data;
+        sequence <IOP::TaggedComponent> components;
+    };
+
+    enum MsgType {
+        MTEstablishContext, 
+        MTCompleteEstablishContext,
+        MTContinueEstablishContext,
+        MTDiscardContext,
+        MTMessageError,
+        MTMessageInContext
+    };
+
+#ifdef NOLONGLONG
+    struct ulonglong {
+	unsigned long low;
+	unsigned long high;
+    };
+    typedef ulonglong ContextId;
+#else
+    typedef unsigned long long ContextId;
+#endif
+    enum ContextIdDefn {
+        CIDClient, 
+        CIDPeer,
+        CIDSender
+    };
+
+    struct EstablishContext {
+        ContextId            client_context_id;
+        sequence <octet>     initial_context_token;
+    };
+
+    struct CompleteEstablishContext {
+        ContextId        client_context_id;
+        boolean          target_context_id_valid;
+        ContextId        target_context_id;
+        sequence <octet> final_context_token;
+    };
+
+    struct ContinueEstablishContext {
+        ContextId        client_context_id;
+        sequence <octet> continuation_context_token;
+    };
+
+    struct DiscardContext {    
+        ContextIdDefn    message_context_id_defn;
+        ContextId        message_context_id;
+        sequence <octet> discard_context_token;
+    };
+
+    struct MessageError {
+        ContextIdDefn    message_context_id_defn;
+        ContextId        message_context_id;
+        long             major_status;
+        long             minor_status;
+    };
+
+    enum ContextTokenType {
+        SecTokenTypeWrap,
+        SecTokenTypeMIC
+    };
+
+    struct MessageInContext {
+        ContextIdDefn    message_context_id_defn;
+        ContextId        message_context_id;
+        ContextTokenType message_context_type;
+        sequence <octet> message_protection_token;
+    };
+
+    // messsage_protection_token is obtained by CDR encoding
+    // the SequencingHeader followed by the octets of the
+    // frame data. Sequencingheader + Frame Data is called a
+    // SequencedDataFrame
+
+    struct SequencingHeader {
+        octet            control_state;
+        unsigned long    direct_sequence_number;
+        unsigned long    reverse_sequence_number;
+        unsigned long    reverse_window;
+    };
+
+    typedef sequence <octet> SecurityName;
+    typedef unsigned short   CryptographicProfile;
+    typedef sequence <CryptographicProfile> CryptographicProfileList;
+
+    // Cryptographic profiles for SPKM
+    const CryptographicProfile    MD5_RSA = 20;
+    const CryptographicProfile    MD5_DES_CBC = 21;
+    const CryptographicProfile    DES_CBC = 22;
+    const CryptographicProfile    MD5_DES_CBC_SOURCE  = 23;
+    const CryptographicProfile    DES_CBC_SOURCE  = 24;
+
+    // Security Mechanism SPKM_1
+    const IOP::ComponentId        TAG_SPKM_1_SEC_MECH = 15;
+
+    struct SPKM_1 {
+        Security::AssociationOptions    target_supports;
+        Security::AssociationOptions    target_requires;
+        CryptographicProfileList        crypto_profile;
+        SecurityName                    security_name;
+    };
+
+    // Security Mechanism SPKM_2
+    const IOP::ComponentId        TAG_SPKM_2_SEC_MECH = 16;
+
+    struct SPKM_2 {
+        Security::AssociationOptions    target_supports;
+        Security::AssociationOptions    target_requires;
+        CryptographicProfileList        crypto_profile;
+        SecurityName                    security_name;
+    };
+
+    // Cryptographic profiles for GSS Kerberos Protocol
+    const CryptographicProfile    DES_CBC_DES_MAC = 10;
+    const CryptographicProfile    DES_CBC_MD5 = 11;
+    const CryptographicProfile    DES_MAC = 12;
+    const CryptographicProfile    MD5 = 13;
+
+    // Security Mechanism KerberosV5
+    const IOP::ComponentId        TAG_KerberosV5_SEC_MECH = 17;
+
+    struct KerberosV5 {
+        Security::AssociationOptions    target_supports;
+        Security::AssociationOptions    target_requires;
+        CryptographicProfileList        crypto_profile;
+        SecurityName                    security_name;
+    };
+
+    // Cryptographic profiles for CSI-ECMA Protocol
+    const CryptographicProfile    FullSecurity = 1;
+    const CryptographicProfile    NoDataConfidentiality = 2;
+    const CryptographicProfile    LowGradeConfidentiality = 3;
+    const CryptographicProfile    AgreedDefault = 5;
+
+    // Security Mechanism CSI_ECMA_Secret
+    const IOP::ComponentId        TAG_CSI_ECMA_Secret_SEC_MECH = 18;
+
+    struct CSI_ECMA_Secret {
+        Security::AssociationOptions    target_supports;
+        Security::AssociationOptions    target_requires;
+        CryptographicProfileList        crypto_profile;
+        SecurityName                    security_name;
+    };
+
+    // Security Mechanism CSI_ECMA_Hybrid
+    const IOP::ComponentId        TAG_CSI_ECMA_Hybrid_SEC_MECH = 19;
+
+    struct CSI_ECMA_Hybrid {
+        Security::AssociationOptions    target_supports;
+        Security::AssociationOptions    target_requires;
+        CryptographicProfileList        crypto_profile;
+        SecurityName                    security_name;
+    };
+
+    // Security Mechanism CSI_ECMA_Public
+    const IOP::ComponentId        TAG_CSI_ECMA_Public_SEC_MECH = 21;
+
+    struct CSI_ECMA_Public {
+        Security::AssociationOptions    target_supports;
+        Security::AssociationOptions    target_requires;
+        CryptographicProfileList        crypto_profile;
+        SecurityName                    security_name;
+    };
+};
+#endif /* _SECIOP_IDL_ */
+
+
+
+//File: Security.idl
+//Part of the Security Service
+// Note: if your IDL compiler does not yet support the 
+//   CORBA 2.3 Feature "Escaped Identifiers" (which provides 
+//   for the addition of new keywords to IDL, compile this 
+//   module with the preprocessor definition 
+//   "NO_ESCAPED_IDENTIFIERS". With many compilers this 
+//   would be done a qualifier on the command line, 
+//   something like -DNO_ESCAPED_IDENTIFIERS
+
+#ifndef _SECURITY_IDL
+#define _SECURITY_IDL
+
+#include <orb.idl>
+#include <TimeBase.idl>
+
+#pragma prefix "omg.org"
+
+module Security {
+
+    typedef string SecurityName;
+    typedef sequence <octet> Opaque;
+
+    // Constant declarations for Security Service Options
+    const CORBA::ServiceOption SecurityLevel1 = 1;
+    const CORBA::ServiceOption SecurityLevel2 = 2;
+    const CORBA::ServiceOption NonRepudiation = 3;
+    const CORBA::ServiceOption SecurityORBServiceRaady = 4;
+    const CORBA::ServiceOption SecurityServiceReady = 5;
+    const CORBA::ServiceOption ReplaceORBServices = 6;
+    const CORBA::ServiceOption ReplaceSecurityServices = 7;
+    const CORBA::ServiceOption StandardSecureInteroperability = 8;
+    const CORBA::ServiceOption DCESecureInteroperability = 9;
+
+    // Service options for Common Secure Interoperability
+    const CORBA::ServiceOption CommonInteroperabilityLevel0 = 10;
+    const CORBA::ServiceOption CommonInteroperabilityLevel1 = 11;
+    const CORBA::ServiceOption CommonInteroperabilityLevel2 = 12;
+
+    // Security mech types supported for secure association
+    const CORBA::ServiceDetailType SecurityMechanismType = 1;
+
+    // privilege types supported in standard access policy
+    const CORBA::ServiceDetailType SecurityAttribute = 2;
+ 
+   // extensible families for standard data types
+    struct ExtensibleFamily {
+        unsigned short        family_definer;
+        unsigned short        family;
+    };
+
+    // security association mechanism type
+    typedef string    MechanismType;
+
+    struct     SecurityMechandName {
+        MechanismType         mech_type;
+        SecurityName          security_name;
+    };
+
+    typedef sequence <MechanismType> MechanismTypeList;
+
+    typedef sequence <SecurityMechandName>  SecurityMechandNameList;
+
+
+    // security attributes
+    typedef unsigned long SecurityAttributeType;
+
+    // other attributes; family = 0
+    const SecurityAttributeType    AuditId = 1;
+    const SecurityAttributeType    AccountingId = 2;
+    const SecurityAttributeType    NonRepudiationId = 3;
+
+    // privilege attributes; family = 1
+#ifdef NO_ESCAPED_IDENTIFIERS
+    const SecurityAttributeType    Public = 1;
+#else
+    const SecurityAttributeType    _Public = 1;
+#endif
+    const SecurityAttributeType    AccessId = 2; 
+    const SecurityAttributeType    PrimaryGroupId = 3;
+    const SecurityAttributeType    GroupId = 4;
+    const SecurityAttributeType    Role = 5;
+    const SecurityAttributeType    AttributeSet = 6;
+    const SecurityAttributeType    Clearance = 7; 
+    const SecurityAttributeType    Capability = 8;
+
+    struct AttributeType {
+        ExtensibleFamily      attribute_family;
+        SecurityAttributeType attribute_type;
+    };
+
+    typedef sequence<AttributeType> AttributeTypeList;
+
+    struct SecAttribute {
+        AttributeType         attribute_type;
+        Opaque                defining_authority; 
+        Opaque                value;
+        // the value of this attribute can be 
+        // interpreted only with knowledge of type
+    };
+
+    typedef sequence <SecAttribute> AttributeList;
+
+
+    // Authentication return status
+    enum AuthenticationStatus {
+        SecAuthSuccess,
+        SecAuthFailure,
+        SecAuthContinue,
+        SecAuthExpired
+    };
+
+    // Association return status
+    enum AssociationStatus {
+        SecAssocSuccess,
+        SecAssocFailure,
+        SecAssocContinue
+    };
+
+    // Authentication method
+    typedef unsigned long    AuthenticationMethod;
+
+    // Credential types which can be set as Current default
+    enum CredentialType {
+        SecInvocationCredentials,
+        SecNRCredentials
+    };
+
+    // Declarations related to Rights 
+    struct Right {
+        ExtensibleFamily        rights_family;
+        string                  right;
+    };
+
+    typedef sequence <Right> RightsList;
+
+    enum RightsCombinator {
+        SecAllRights,
+        SecAnyRight
+    };
+
+    // Delegation related
+    enum DelegationState {
+        SecInitiator,
+        SecDelegate
+    };
+
+    // pick up from TimeBase
+    typedef TimeBase::UtcT        UtcT;
+    typedef TimeBase::IntervalT   IntervalT;
+    typedef TimeBase::TimeT       TimeT;
+
+    // Security features available on credentials.
+    enum SecurityFeature {
+        SecNoDelegation,
+        SecSimpleDelegation,
+        SecCompositeDelegation,
+        SecNoProtection,
+        SecIntegrity,
+        SecConfidentiality,
+        SecIntegrityAndConfidentiality,
+        SecDetectReplay,
+        SecDetectMisordering,
+        SecEstablishTrustInTarget
+    };
+
+    // Security feature-value
+    struct SecurityFeatureValue {
+        SecurityFeature          feature;
+        boolean                  value;
+    };
+
+    typedef sequence <SecurityFeatureValue> SecurityFeatureValueList;
+
+
+    // Quality of protection which can be specified
+    // for an object reference and used to protect messages
+    enum QOP {
+        SecQOPNoProtection,
+        SecQOPIntegrity,
+        SecQOPConfidentiality,
+        SecQOPIntegrityAndConfidentiality
+    };
+
+    // Association options which can be administered
+    // on secure invocation policy and used to
+    // initialize security context
+    typedef unsigned short    AssociationOptions;
+
+    const AssociationOptions NoProtection = 1;
+    const AssociationOptions Integrity = 2; 
+    const AssociationOptions Confidentiality = 4; 
+    const AssociationOptions DetectReplay = 8; 
+    const AssociationOptions DetectMisordering = 16;
+    const AssociationOptions EstablishTrustInTarget = 32; 
+    const AssociationOptions EstablishTrustInClient = 64;
+
+    // Flag to indicate whether association options being
+    // administered are the "required" or "supported" set
+    enum RequiresSupports {    
+        SecRequires,
+        SecSupports
+    };
+
+    // Direction of communication for which
+    // secure invocation policy applies
+    enum CommunicationDirection {     
+        SecDirectionBoth,
+        SecDirectionRequest,
+        SecDirectionReply
+    };
+
+    // AssociationOptions-Direction pair
+    struct OptionsDirectionPair {
+        AssociationOptions           options;
+        CommunicationDirection       direction;
+    };
+
+    typedef sequence <OptionsDirectionPair> OptionsDirectionPairList;
+
+
+    // Delegation mode which can be administered
+    enum DelegationMode {
+        SecDelModeNoDelegation,       // i.e. use own credentials
+        SecDelModeSimpleDelegation,   // delegate received credentials 
+        SecDelModeCompositeDelegation // delegate both; 
+    };
+
+    // Association options supported by a given mech type
+    struct MechandOptions {
+        MechanismType        mechanism_type;
+        AssociationOptions   options_supported;
+    };
+
+    typedef sequence <MechandOptions> MechandOptionsList;
+
+
+    // Audit 
+    typedef unsigned long  AuditChannelId;
+    typedef unsigned short EventType;
+
+    const EventType    AuditAll = 0;
+    const EventType    AuditPrincipalAuth = 1;
+    const EventType    AuditSessionAuth = 2;
+    const EventType    AuditAuthorization = 3;
+    const EventType    AuditInvocation = 4;
+    const EventType    AuditSecEnvChange = 5;
+    const EventType    AuditPolicyChange = 6;
+    const EventType    AuditObjectCreation = 7;
+    const EventType    AuditObjectDestruction = 8;
+    const EventType    AuditNonRepudiation = 9;
+
+    struct AuditEventType {
+        ExtensibleFamily    event_family;
+        EventType           event_type;
+    };
+
+    typedef sequence <AuditEventType> AuditEventTypeList;
+
+    typedef unsigned long SelectorType;
+
+    const SelectorType    InterfaceRef = 1;
+    const SelectorType    ObjectRef = 2;
+    const SelectorType    Operation = 3;
+    const SelectorType    Initiator = 4;
+    const SelectorType    SuccessFailure = 5;
+    const SelectorType    Time = 6;
+
+    // values defined for audit_needed and audit_write are:
+    // InterfaceRef: object reference
+    // ObjectRef: object reference
+    // Operation: op_name 
+    // Initiator: Credentials
+    // SuccessFailure: boolean
+    // Time: utc time on audit_write; time picked up from
+    // environment in audit_needed if required
+
+    struct SelectorValue {
+        SelectorType        selector;
+        any                 value;
+    };
+
+    typedef sequence <SelectorValue> SelectorValueList;
+
+    // Constant declaration for valid Security Policy Types
+    // General administrative policies
+    const CORBA::PolicyType SecClientInvocationAccess = 1;
+    const CORBA::PolicyType SecTargetInvocationAccess = 2;
+    const CORBA::PolicyType SecApplicationAccess      = 3;
+    const CORBA::PolicyType SecClientInvocationAudit  = 4;
+    const CORBA::PolicyType SecTargetInvocationAudit  = 5;
+    const CORBA::PolicyType SecApplicationAudit       = 6;
+    const CORBA::PolicyType SecDelegation             = 7;
+    const CORBA::PolicyType SecClientSecureInvocation = 8;
+    const CORBA::PolicyType SecTargetSecureInvocation = 9;
+    const CORBA::PolicyType SecNonRepudiation         = 10;
+
+
+    // Policies used to control attributes of a binding to a target
+    const CORBA::PolicyType SecMechanismsPolicy       = 12;
+    const CORBA::PolicyType SecCredentialsPolicy      = 13;
+    const CORBA::PolicyType SecFeaturesPolicy         = 14;
+    const CORBA::PolicyType SecQOPPolicy              = 15;
+
+};
+#endif /* _SECURITY_IDL */
+
+
+
+//File: SecurityAdmin.idl
+//Part of the Security Service
+
+#ifndef _SECURITY_ADMIN_IDL
+#define _SECURITY_ADMIN_IDL
+
+#include <SecurityLevel2.idl>
+
+#pragma prefix "omg.org"
+
+module SecurityAdmin {
+
+    // interface AccessPolicy
+    interface AccessPolicy : CORBA::Policy {
+        Security::RightsList get_effective_rights (
+            in   Security::AttributeList     attrib_list,
+            in   Security::ExtensibleFamily  rights_family
+        );
+    };
+
+    // interface DomainAccessPolicy
+    interface DomainAccessPolicy : AccessPolicy {
+
+        void grant_rights(
+            in   Security::SecAttribute      priv_attr,
+            in   Security::DelegationState   del_state,
+            in   Security::ExtensibleFamily  rights_family,
+            in   Security::RightsList        rights
+        );
+
+        void revoke_rights(
+            in   Security::SecAttribute      priv_attr,
+            in   Security::DelegationState   del_state,
+            in   Security::ExtensibleFamily  rights_family,
+            in   Security::RightsList        rights
+        );
+
+        void replace_rights (
+            in   Security::SecAttribute      priv_attr,
+            in   Security::DelegationState   del_state,
+            in   Security::ExtensibleFamily  rights_family,
+            in   Security::RightsList        rights
+        );
+
+        Security::RightsList get_rights (
+            in   Security::SecAttribute      priv_attr,
+            in   Security::DelegationState   del_state,
+            in   Security::ExtensibleFamily  rights_family
+        );
+    };
+
+    // interface AuditPolicy
+    interface AuditPolicy : CORBA::Policy {
+
+        void set_audit_selectors (
+            in   CORBA::InterfaceDef          object_type,
+            in   Security::AuditEventTypeList events,
+            in   Security::SelectorValueList  selectors 
+        );
+
+        void clear_audit_selectors (
+            in   CORBA::InterfaceDef          object_type,
+            in   Security::AuditEventTypeList events         
+        );
+
+        void replace_audit_selectors (
+            in   CORBA::InterfaceDef          object_type,
+            in   Security::AuditEventTypeList events,
+            in   Security::SelectorValueList  selectors 
+        ); 
+
+        Security::SelectorValueList get_audit_selectors (
+            in   CORBA::InterfaceDef           object_type,
+            in   Security::AuditEventTypeList  events
+        ); 
+
+        void set_audit_channel (
+            in   Security::AuditChannelId      audit_channel_id
+        );
+    };
+
+    // interface SecureInvocationPolicy
+    interface SecureInvocationPolicy : CORBA::Policy {
+
+        void set_association_options(
+            in   CORBA::InterfaceDef              object_type,
+            in   Security::RequiresSupports       requires_supports,
+            in   Security::CommunicationDirection direction,
+            in   Security::AssociationOptions     options 
+        );
+
+        Security::AssociationOptions get_association_options(
+            in   CORBA::InterfaceDef              object_type,
+            in   Security::RequiresSupports       requires_supports,
+            in   Security::CommunicationDirection direction
+        ); 
+    };
+
+    // interface DelegationPolicy
+    interface DelegationPolicy : CORBA::Policy {
+
+        void set_delegation_mode(
+            in   CORBA::InterfaceDef          object_type,
+            in   Security::DelegationMode     mode
+        );
+
+        Security::DelegationMode get_delegation_mode(
+            in   CORBA::InterfaceDef          object_type
+        );
+    };
+};
+
+#endif /* _SECURITY_ADMIN_IDL */
+
+
+
+//File: SecurityLevel1.idl
+//Part of the Security Service
+
+#ifndef _SECURITY_LEVEL_1_IDL
+#define _SECURITY_LEVEL_1_IDL
+
+#include <Security.idl>
+
+#pragma prefix "omg.org"
+
+module SecurityLevel1 {
+
+    interface Current : CORBA::Current {	// Locality Constrained
+
+        // thread specific operations
+
+        Security::AttributeList get_attributes (            
+            in    Security::AttributeTypeList  attributes 
+        );
+
+    };
+};
+#endif /* _SECURITY_LEVEL_1_IDL */
+
+
+
+//File: SecurityLevel2.idl
+//Part of the Security Service
+
+#ifndef _SECURITY_LEVEL_2_IDL
+#define _SECURITY_LEVEL_2_IDL
+
+#include <SecurityLevel1.idl>
+
+#pragma prefix "omg.org"
+
+module SecurityLevel2 {
+
+    // Forward declaration of interfaces
+    interface PrincipalAuthenticator;
+    interface Credentials;
+    interface Current;
+
+    // Interface PrincipalAuthenticator
+    interface PrincipalAuthenticator {    // Locality Constrained
+
+        Security::AuthenticationStatus authenticate (
+            in   Security::AuthenticationMethod    method,
+            in   Security::SecurityName            security_name,
+            in   Security::Opaque                  auth_data,
+            in   Security::AttributeList           privileges,
+            out  Credentials                       creds,
+            out  Security::Opaque                  continuation_data,
+            out  Security::Opaque                  auth_specific_data
+        );
+
+        Security::AuthenticationStatus continue_authentication (
+            in   Security::Opaque                  response_data,
+            in   Credentials                       creds,
+            out  Security::Opaque                  continuation_data,
+            out  Security::Opaque                  auth_specific_data
+        );
+    };
+
+
+    // Interface Credentials
+    interface Credentials {     // Locality Constrained
+
+        Credentials copy ();
+
+        void destroy();
+ 
+        void set_security_features (                
+            in   Security::CommunicationDirection   direction,
+            in   Security::SecurityFeatureValueList security_features
+        );
+
+        Security::SecurityFeatureValueList get_security_features (
+            in   Security::CommunicationDirection   direction
+        );
+
+        boolean set_privileges (
+            in   boolean                            force_commit,
+            in   Security::AttributeList            requested_privileges,
+            out  Security::AttributeList            actual_privileges
+        );
+
+        Security::AttributeList get_attributes (
+            in   Security::AttributeTypeList        attributes
+        );
+
+        boolean is_valid (
+            out  Security::UtcT                     expiry_time
+        );
+
+        boolean refresh();
+    };
+
+    typedef sequence <Credentials>  CredentialsList;
+
+
+    // RequiredRights Interface
+    interface RequiredRights{
+
+        void get_required_rights(
+            in   Object                             obj,
+            in   CORBA::Identifier                  operation_name,
+            in   CORBA::RepositoryId                interface_name,
+            out  Security::RightsList               rights,
+            out  Security::RightsCombinator         rights_combinator
+        );
+
+        void set_required_rights(
+            in   string                             operation_name,
+            in   CORBA::RepositoryId                interface_name,
+            in   Security::RightsList               rights,
+            in   Security::RightsCombinator         rights_combinator
+        );
+    };
+
+
+    // interface audit channel
+    interface AuditChannel {  // Locality Constrained
+
+        void audit_write (
+            in   Security::AuditEventType            event_type,
+            in   CredentialsList                     creds,  
+            in   Security::UtcT                      time,
+            in   Security::SelectorValueList         descriptors,
+            in   Security::Opaque                    event_specific_data
+        );
+
+        readonly attribute Security::AuditChannelId audit_channel_id;
+    };
+
+
+    // interface for Audit Decision 
+    interface AuditDecision {  // Locality Constrained
+
+        boolean audit_needed (
+            in   Security::AuditEventType            event_type,
+            in   Security::SelectorValueList         value_list
+        );
+
+        readonly attribute AuditChannel audit_channel;
+    };
+
+
+    interface AccessDecision {  // Locality Constrained
+
+        boolean access_allowed (
+            in   SecurityLevel2::CredentialsList     cred_list,
+            in   Object                              target,
+            in   CORBA::Identifier                   operation_name,
+            in   CORBA::Identifier                   target_interface_name
+        );
+    };
+
+
+    // Policy interfaces to control bindings
+
+    interface QOPPolicy : CORBA::Policy {  // Locality Constrained
+        readonly attribute Security::QOP qop;
+    };
+
+    interface MechanismPolicy : CORBA::Policy {   // Locality Constrained
+        readonly attribute Security::MechanismTypeList mechanisms;
+    };
+
+    interface SecurityFeaturesPolicy : CORBA::Policy {// Locality Constrained
+        readonly attribute Security::SecurityFeatureValueList features;
+    };
+
+    interface InvocationCredentialsPolicy : CORBA::Policy {
+                                                      // Locality Constrained
+        readonly attribute CredentialsList creds;
+    };
+
+    enum DelegationMode {Delegate, NoDelegate};
+
+
+    // Interface Current derived from SecurityLevel1::Current
+    // providing additional operations on Current at this
+    // security level. This is implemented by the ORB
+
+    interface Current : SecurityLevel1::Current {  // Locality Constrained
+
+    // Thread specific operations
+
+        readonly attribute CredentialsList received_credentials;
+        readonly attribute CredentialsList own_credentials;
+        readonly attribute Security::SecurityFeatureValueList
+                                        received_security_features;
+        void set_credentials (
+            in   Security::CredentialType          cred_type,
+            in   CredentialsList                   creds,
+            in   DelegationMode                    del
+        );
+
+        CredentialsList get_credentials (
+            in   Security::CredentialType          cred_type
+        );
+
+        CORBA::Policy get_policy (
+            in   CORBA::PolicyType                 policy_type
+        );
+
+    // Process/Capsule/ORB Instance specific operations
+
+        readonly attribute RequiredRights required_rights_object;
+        readonly attribute PrincipalAuthenticator principal_authenticator;
+        readonly attribute AccessDecision access_decision;
+        readonly attribute AuditDecision audit_decision;
+
+        // security names for given target
+        Security::SecurityMechandNameList get_security_names (
+            in   Object                            obj_ref
+        );
+
+        // Factory operations for local policies controlling bindings
+        QOPPolicy create_qop_policy(
+            in   Security::QOP                     qop
+        );
+
+        MechanismPolicy create_mechanism_policy(
+            in   Security::MechanismTypeList       mechanisms
+        );
+
+        InvocationCredentialsPolicy create_invoc_creds_policy(
+            in   CredentialsList                   creds
+        );
+    };
+};
+
+#endif /* _SECURITY_LEVEL_2_IDL */
+
+
+
+//File: SecurityReplaceable.idl
+//Part of the Security Service
+
+#ifndef _SECURITY_REPLACEABLE_IDL
+#define _SECURITY_REPLACEABLE_IDL
+
+#include <SecurityLevel2.idl>
+
+#pragma prefix "omg.org"
+
+module SecurityReplaceable {
+
+    interface SecurityContext;
+
+
+    interface Vault {   // Locality Constrained
+
+        Security::AssociationStatus init_security_context (
+            in   SecurityLevel2::CredentialsList    creds_list,
+            in   Security::SecurityName             target_security_name,
+            in   Object                             target,
+            in   Security::DelegationMode           delegation_mode,
+            in   Security::OptionsDirectionPairList association_options,
+            in   Security::MechanismType            mechanism,
+            in   Security::Opaque                   mech_data, //from IOR
+            in   Security::Opaque                   chan_binding,
+            out  Security::Opaque                   security_token,
+            out  SecurityContext                    security_context
+        );
+
+        Security::AssociationStatus accept_security_context (
+            in   SecurityLevel2::CredentialsList    creds_list,
+            in   Security::Opaque                   chan_bindings,
+            in   Security::Opaque                   in_token,
+            out  Security::Opaque                   out_token
+        );
+
+        Security::MechandOptionsList get_supported_mechs ();
+    };
+
+
+    interface SecurityContext {   // Locality Constrained
+
+        readonly attribute SecurityLevel2::CredentialsList
+                                                 received_credentials;
+
+        readonly attribute Security::SecurityFeatureValueList
+                                                security_features;
+
+        Security::AssociationStatus continue_security_context (
+            in   Security::Opaque      in_token,
+            out  Security::Opaque      out_token
+        );
+
+        void protect_message (
+            in   Security::Opaque      message,
+            in   Security::QOP         qop,
+            out  Security::Opaque      text_buffer,
+            out  Security::Opaque      token
+        );
+
+        boolean reclaim_message (
+            in   Security::Opaque      text_buffer,
+            in   Security::Opaque      token,
+            out  Security::QOP         qop,
+            out  Security::Opaque      message
+        );
+
+        boolean is_valid (
+            out  Security::UtcT        expiry_time
+        );
+
+        boolean refresh ();
+    };
+
+
+};
+
+#endif /* _SECURITY_REPLACEABLE_IDL */
+
+
+//File: SSLIOP.idl
+//Part of the Security Service
+
+#ifndef _SSLIOP_IDL
+#define _SSLIOP_IDL
+
+#include <IOP.idl>
+#include <Security.idl>
+
+#pragma prefix "omg.org"
+
+module SSLIOP {
+
+    // Security mechanism SSL
+    const IOP::ComponentId        TAG_SSL_SEC_TRANS = 20;
+
+    struct SSL {
+        Security::AssociationOptions    target_supports;
+        Security::AssociationOptions    target_requires;
+        unsigned short        port;
+    };
+};
+#endif /* _SSLIOP_IDL */
+
+

@@ -1,0 +1,8 @@
+
+module Messaging {
+    struct PolicyValue {
+        CORBA::PolicyType ptype;
+        sequence<octet> pvalue;
+    };
+    typedef sequence<PolicyValue> PolicyValueSeq;
+};
