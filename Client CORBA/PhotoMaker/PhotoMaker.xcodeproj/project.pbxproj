@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		30D9BB811AB25174001DB228 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D9BB801AB25174001DB228 /* main.m */; };
+		30D9BB841AB25174001DB228 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D9BB831AB25174001DB228 /* AppDelegate.m */; };
+		30D9BB871AB25174001DB228 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D9BB861AB25174001DB228 /* ViewController.m */; };
+		30D9BB8A1AB25174001DB228 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BB881AB25174001DB228 /* Main.storyboard */; };
+		30D9BB8C1AB25174001DB228 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BB8B1AB25174001DB228 /* Images.xcassets */; };
+		30D9BB8F1AB25174001DB228 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30D9BB8D1AB25174001DB228 /* LaunchScreen.xib */; };
+		30D9BB9B1AB25175001DB228 /* PhotoMakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D9BB9A1AB25175001DB228 /* PhotoMakerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		30D9BB951AB25175001DB228 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 30D9BB731AB25174001DB228 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30D9BB7A1AB25174001DB228;
+			remoteInfo = PhotoMaker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		30D9BB7B1AB25174001DB228 /* PhotoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D9BB7F1AB25174001DB228 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30D9BB801AB25174001DB228 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		30D9BB821AB25174001DB228 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		30D9BB831AB25174001DB228 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		30D9BB851AB25174001DB228 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		30D9BB861AB25174001DB228 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		30D9BB891AB25174001DB228 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		30D9BB8B1AB25174001DB228 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		30D9BB8E1AB25174001DB228 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		30D9BB941AB25175001DB228 /* PhotoMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D9BB991AB25175001DB228 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30D9BB9A1AB25175001DB228 /* PhotoMakerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoMakerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		30D9BB781AB25174001DB228 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D9BB911AB25175001DB228 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		30D9BB721AB25174001DB228 = {
+			isa = PBXGroup;
+			children = (
+				30D9BB7D1AB25174001DB228 /* PhotoMaker */,
+				30D9BB971AB25175001DB228 /* PhotoMakerTests */,
+				30D9BB7C1AB25174001DB228 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		30D9BB7C1AB25174001DB228 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BB7B1AB25174001DB228 /* PhotoMaker.app */,
+				30D9BB941AB25175001DB228 /* PhotoMakerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		30D9BB7D1AB25174001DB228 /* PhotoMaker */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BB821AB25174001DB228 /* AppDelegate.h */,
+				30D9BB831AB25174001DB228 /* AppDelegate.m */,
+				30D9BB851AB25174001DB228 /* ViewController.h */,
+				30D9BB861AB25174001DB228 /* ViewController.m */,
+				30D9BB881AB25174001DB228 /* Main.storyboard */,
+				30D9BB8B1AB25174001DB228 /* Images.xcassets */,
+				30D9BB8D1AB25174001DB228 /* LaunchScreen.xib */,
+				30D9BB7E1AB25174001DB228 /* Supporting Files */,
+			);
+			path = PhotoMaker;
+			sourceTree = "<group>";
+		};
+		30D9BB7E1AB25174001DB228 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BB7F1AB25174001DB228 /* Info.plist */,
+				30D9BB801AB25174001DB228 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		30D9BB971AB25175001DB228 /* PhotoMakerTests */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BB9A1AB25175001DB228 /* PhotoMakerTests.m */,
+				30D9BB981AB25175001DB228 /* Supporting Files */,
+			);
+			path = PhotoMakerTests;
+			sourceTree = "<group>";
+		};
+		30D9BB981AB25175001DB228 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				30D9BB991AB25175001DB228 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		30D9BB7A1AB25174001DB228 /* PhotoMaker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30D9BB9E1AB25175001DB228 /* Build configuration list for PBXNativeTarget "PhotoMaker" */;
+			buildPhases = (
+				30D9BB771AB25174001DB228 /* Sources */,
+				30D9BB781AB25174001DB228 /* Frameworks */,
+				30D9BB791AB25174001DB228 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhotoMaker;
+			productName = PhotoMaker;
+			productReference = 30D9BB7B1AB25174001DB228 /* PhotoMaker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		30D9BB931AB25175001DB228 /* PhotoMakerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30D9BBA11AB25175001DB228 /* Build configuration list for PBXNativeTarget "PhotoMakerTests" */;
+			buildPhases = (
+				30D9BB901AB25175001DB228 /* Sources */,
+				30D9BB911AB25175001DB228 /* Frameworks */,
+				30D9BB921AB25175001DB228 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30D9BB961AB25175001DB228 /* PBXTargetDependency */,
+			);
+			name = PhotoMakerTests;
+			productName = PhotoMakerTests;
+			productReference = 30D9BB941AB25175001DB228 /* PhotoMakerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		30D9BB731AB25174001DB228 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = Distvi;
+				TargetAttributes = {
+					30D9BB7A1AB25174001DB228 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					30D9BB931AB25175001DB228 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 30D9BB7A1AB25174001DB228;
+					};
+				};
+			};
+			buildConfigurationList = 30D9BB761AB25174001DB228 /* Build configuration list for PBXProject "PhotoMaker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 30D9BB721AB25174001DB228;
+			productRefGroup = 30D9BB7C1AB25174001DB228 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				30D9BB7A1AB25174001DB228 /* PhotoMaker */,
+				30D9BB931AB25175001DB228 /* PhotoMakerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		30D9BB791AB25174001DB228 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D9BB8A1AB25174001DB228 /* Main.storyboard in Resources */,
+				30D9BB8F1AB25174001DB228 /* LaunchScreen.xib in Resources */,
+				30D9BB8C1AB25174001DB228 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D9BB921AB25175001DB228 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		30D9BB771AB25174001DB228 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D9BB871AB25174001DB228 /* ViewController.m in Sources */,
+				30D9BB841AB25174001DB228 /* AppDelegate.m in Sources */,
+				30D9BB811AB25174001DB228 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30D9BB901AB25175001DB228 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D9BB9B1AB25175001DB228 /* PhotoMakerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		30D9BB961AB25175001DB228 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 30D9BB7A1AB25174001DB228 /* PhotoMaker */;
+			targetProxy = 30D9BB951AB25175001DB228 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		30D9BB881AB25174001DB228 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30D9BB891AB25174001DB228 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		30D9BB8D1AB25174001DB228 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30D9BB8E1AB25174001DB228 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		30D9BB9C1AB25175001DB228 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		30D9BB9D1AB25175001DB228 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		30D9BB9F1AB25175001DB228 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PhotoMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		30D9BBA01AB25175001DB228 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PhotoMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		30D9BBA21AB25175001DB228 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PhotoMakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoMaker.app/PhotoMaker";
+			};
+			name = Debug;
+		};
+		30D9BBA31AB25175001DB228 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PhotoMakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoMaker.app/PhotoMaker";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30D9BB761AB25174001DB228 /* Build configuration list for PBXProject "PhotoMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D9BB9C1AB25175001DB228 /* Debug */,
+				30D9BB9D1AB25175001DB228 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30D9BB9E1AB25175001DB228 /* Build configuration list for PBXNativeTarget "PhotoMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D9BB9F1AB25175001DB228 /* Debug */,
+				30D9BBA01AB25175001DB228 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30D9BBA11AB25175001DB228 /* Build configuration list for PBXNativeTarget "PhotoMakerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D9BBA21AB25175001DB228 /* Debug */,
+				30D9BBA31AB25175001DB228 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 30D9BB731AB25174001DB228 /* Project object */;
+}
