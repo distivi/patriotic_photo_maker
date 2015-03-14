@@ -51,6 +51,7 @@ new_im.paste(img2,(0,height1))
 new_im.save("43.jpg")
 
 with open("43.jpg", "rb") as imageFile:
+    print imageFile
     str = base64.b64encode(imageFile.read())
-    print str
+    # print str
 
